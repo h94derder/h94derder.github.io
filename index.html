@@ -6,14 +6,14 @@
     <script src="/Scripts/jquery-3.4.1.min.js"></script>
     <script>
 
-         //更新資料測試
+        //更新資料測試
         function callApi1Test() {
+
             $.ajax(
                 {
-                    url: 'https://script.google.com/macros/s/AKfycbz9Y6TknyWrXQ54hlMXMHRY77hMUSX8wWeZ0BT_VdZhUWWip8VUxwPolc7AdVoLt_ADDA/exec',                   
+                    url: 'https://script.google.com/macros/s/AKfycbyJ2B759x_15a0pkqo5-syJ3RxUDFuWQLeQL3DcVFjjyxPFsRXj6BvcgBCEd2RuJpRXFQ/exec',
                     type: 'GET',
-                    contentType: "application/json",
-                    headers: { "X-Requested-With": 'XMLHttpRequest' },
+                    data: {d:'123'},
                     success: function (e) {
                         console.log(e)
                         if (e.RESULT_CODE == '99') {
@@ -24,6 +24,16 @@
                         alert('RESULT_DESC:' + e.RESULT_DESC)
                     }
                 });
+        }
+
+
+
+
+        async function getData() {
+            const uri = 'https://script.google.com/macros/s/AKfycbz9Y6TknyWrXQ54hlMXMHRY77hMUSX8wWeZ0BT_VdZhUWWip8VUxwPolc7AdVoLt_ADDA/exec'
+            const response = await fetch(uri);
+            const data = await response.json();
+            console.log(data);
         }
     </script>
 </head>
