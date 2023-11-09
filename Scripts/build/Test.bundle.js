@@ -129,25 +129,30 @@ var Main = /*#__PURE__*/function (_React$Component) {
     _this.aaa = function () {
       callApi1Test();
     };
+    _this.testAopii = function () {
+      Api('https://script.google.com/macros/s/AKfycbyJ2B759x_15a0pkqo5-syJ3RxUDFuWQLeQL3DcVFjjyxPFsRXj6BvcgBCEd2RuJpRXFQ/exec', {
+        d: '456'
+      }, function (e) {
+        alert(e);
+      }, function (e) {
+        alert(e);
+      });
+    };
     return _this;
   }
   _createClass(Main, [{
     key: "render",
     value: function render() {
       var _this2 = this;
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("video", {
-        autoPlay: true,
-        muted: true,
-        loop: true,
-        id: "myVideo"
-      }, /*#__PURE__*/React.createElement("source", {
-        src: "/Content/001.mp4",
-        type: "video/mp4"
-      }), "Your browser does not support HTML5 video."), /*#__PURE__*/React.createElement("input", {
+      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", null, "Game", /*#__PURE__*/React.createElement("br", null), "Name"), /*#__PURE__*/React.createElement("button", {
+        href: "/admin/"
+      }, "START"), /*#__PURE__*/React.createElement("a", {
+        href: "/admin/"
+      }, "admin?"), /*#__PURE__*/React.createElement("input", {
         type: "button",
         value: "Test Call API",
         onClick: function onClick() {
-          _this2.aaa();
+          _this2.testAopii();
         }
       }));
     }
