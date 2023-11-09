@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <script src="/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="/Styles/mask-loaing.css" rel="stylesheet" />
     <script>
 
         //更新資料測試
@@ -35,22 +36,61 @@
             const data = await response.json();
             console.log(data);
         }
+
+        var maskFlag = 0;
+
+        function m_Show() {
+            if (maskFlag == 0) {
+                $('.mask-container').show();
+            }
+            maskFlag++;
+        }
+
+        function m_Hide() {
+            maskFlag--;
+            if (maskFlag <= 0) {
+                $('.mask-container').hide();
+                maskFlag = 0;
+            }
+        }
+
+        function Api(url, data, success, error) {
+            m_Show();
+            var dataObj = {
+                url: url,
+                dataType: 'json',
+                type: 'GET',
+                data: data,
+                cache: false,
+                success: success,
+                error: function (e) { error(e); m_Hide(); }
+            };           
+
+            $.ajax(dataObj).done(function () {
+                m_Hide();
+            });
+        }
     </script>
     <style>
-      
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("../Content/MainBack.png");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
-<body>
-    <div>
-        Game<br />
-        Name
-    </div>
-    <button href="/admin/">START</button>
-    <a href="/admin/">admin?</a>
-    <div>
-        <input type="button" value="Test Call API" onclick="callApi1()" />
-    </div>
-     <div id="app"></div>
-    <script src="/Scripts/build/Test.bundle.js?B23B0BC8465D5D44677EE11ADFC092A661804E4F"></script>
+<body>   
+    <div id="app" class="bg"></div>
+    <script src="/Scripts/build/Test.bundle.js?DCEB16F245516C61A67A79BB82473D260D17C6E6"></script>
 </body>
 </html>
