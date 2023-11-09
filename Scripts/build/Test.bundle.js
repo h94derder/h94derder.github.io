@@ -161,8 +161,11 @@ var Main = /*#__PURE__*/function (_React$Component) {
       }, "\u514C\u63DB\u6642\u9593"), /*#__PURE__*/React.createElement("span", {
         className: "time-wrap__text"
       }, "2023/09/26 - 2023/09/05"))), /*#__PURE__*/React.createElement("button", {
-        "class": "all-take-btn"
-      }, "\u9EDE\u64CA\u512A\u60E0\u5238\u5168\u9818"), /*#__PURE__*/React.createElement("button", {
+        "class": "all-take-btn",
+        onClick: function onClick() {
+          alert('START');
+        }
+      }, "START"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", {
         href: "/admin/"
       }, "START"), /*#__PURE__*/React.createElement("a", {
         href: "/admin/"
