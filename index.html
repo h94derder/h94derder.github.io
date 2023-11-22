@@ -71,6 +71,13 @@
                 m_Hide();
             });
         }
+        function testIP() {
+            $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function (data) {
+                console.log(JSON.stringify(data, null, 2));
+               let d =  JSON.stringify(data, null, 2)
+                alert(data.ip)
+            });
+        }
     </script>
     <style>
         body, html {
@@ -92,6 +99,7 @@
 </head>
 <body>   
     <div id="app" class="bg"></div>
+    <button onclick="testIP()">AAA</button>
     <script src="/Scripts/build/Test.bundle.js?B6C7FCB6CAB0CCF506662899B56F2B10FC1FF28C"></script>
     <div class="mask-container" style="display:none">
         <div class="loading-container">
