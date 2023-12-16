@@ -1,0 +1,13 @@
+:root{
+  --bg-color: #F4F4F4;
+  --time-title-color: #222222;
+  --time-font-color: #222222;
+  --counting-font-color: #E52730;
+  --btn-font-color:white;
+  --btn-bg-color:#0078C8;
+  --flash-font-color:#E52730;
+  --flash-bg-color: #FFE8EC;
+  --title-color: #007BCA;
+  --time-bg-color: rgba(198, 198, 198, 0.15);
+  --ticket-shadow: rgba(111, 102, 108, 0.2);
+}

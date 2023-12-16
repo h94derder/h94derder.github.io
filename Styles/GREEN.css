@@ -1,0 +1,12 @@
+:root{
+  --bg-color: #329D19;
+  --time-title-color: #FFFFFF;
+  --time-font-color: #FFFFFF;
+  --counting-font-color: #FFE500;
+  --btn-font-color: #329D19;
+  --btn-bg-color: #FFE500;
+  --flash-font-color: #FFFFFF;
+  --flash-bg-color: #63C34D;
+  --title-color: #FFE500;
+  --time-bg-color: rgba(255, 255, 255, 0.15);
+}
