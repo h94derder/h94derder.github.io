@@ -1,11 +1,109 @@
+
+@{
+    ViewBag.Title = "Admin";
+}
+
 <!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="" />
+    <meta property="og:image" content="要完整的圖片網址">
+    <meta property="og:description" content="" />
+    <!-- <meta property="og:url" content="site_url" /> -->
+    <base href="./">
+    <link rel="icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>AccudataGame</title>
+
+
+    <link href="/Style/lib/ariComponents.css" rel="stylesheet" />
+    <link href="/Style/mask-loaing.css" rel="stylesheet" />
+    <link href="/Style/index.min.css" rel="stylesheet" />
+    <link href="/Style/GREEN.css" rel="stylesheet" id="serenaCss" />
+    <script src="/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+
+        var maskFlag = 0;
+
+        function m_Show() {
+            if (maskFlag == 0) {
+                $('.mask-container').show();
+            }
+            maskFlag++;
+        }
+
+        function m_Hide() {
+            maskFlag--;
+            if (maskFlag <= 0) {
+                $('.mask-container').hide();
+                maskFlag = 0;
+            }
+        }
+
+        function Api(url, data, success, error) {
+            m_Show();
+            var dataObj = {
+                url: url,
+                dataType: 'json',
+                type: 'POST',
+                /**/
+                data: data, success: function (e) {
+                    success(e);
+                },
+                error: function (e) { error(e); m_Hide(); }
+                /**/
+            };
+            if (data instanceof FormData) {
+                dataObj.processData = false;
+                dataObj.contentType = false;
+            }
+            else {
+                dataObj.contentType = "application/json; charset=UTF-8";
+                dataObj.data = JSON.stringify(data);
+            }
+
+            $.ajax(dataObj).done(function () {
+                m_Hide();
+            });
+        }
+
+        function ChangeColor(color) {
+            let url = document.querySelector("#serenaCss").href
+            let colorList = ['BLUE', 'GREEN', 'ORANGE', 'WHITE', 'YELLOW']
+            for (let i = 0; i < colorList.length; i++) {
+                if (url.includes(colorList[i])) {
+                    url = url.replace(colorList[i], color)
+                    break;
+                }
+            }
+            document.querySelector("#serenaCss").href = url;
+
+        }
+    </script>
+
+
 </head>
 <body>
- 44444
+    <div id="app"></div>
+    
+    <script src="/Scripts/build/Admin.bundle.js?1D4F8C789E0C37FBC1E99F9539FC5AD245A87E30"></script>
+
+    <div class="mask-container">
+        <div class="loading-container">
+            <div class="loading"></div>
+            <div id="loading-text">資料處理中...</div>
+        </div>
+    </div>
 </body>
+<script type="text/javascript">
+    $('.mask-container').hide();
+</script>
 </html>
+
+
