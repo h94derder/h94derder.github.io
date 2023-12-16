@@ -113,30 +113,134 @@ var Main = /*#__PURE__*/function (_React$Component) {
   _inherits(Main, _React$Component);
   var _super = _createSuper(Main);
   function Main(props) {
+    var _this;
     _classCallCheck(this, Main);
-    return _super.call(this, props);
+    _this = _super.call(this, props);
+    /*按鈕事件*/
+    _this.btnStartClick = function () {
+      _this.setState({
+        currentPage: 'Join'
+      });
+      ChangeColor('ORANGE');
+    };
+    _this.btnJoinClick = function () {
+      _this.setState({
+        currentPage: 'Card'
+      });
+      ChangeColor('BLUE');
+    };
+    _this.btnCardNoneClick = function () {
+      _this.setState({
+        getCard: true
+      });
+    };
+    _this.state = {
+      currentPage: 'Main',
+      getCard: false
+    };
+    return _this;
   }
   _createClass(Main, [{
     key: "render",
     value: function render() {
-      var main = /*#__PURE__*/React.createElement("div", {
-        className: "text-center"
-      }, /*#__PURE__*/React.createElement("div", {
-        className: "counting",
-        style: {
-          marginBottom: '110px'
-        }
+      var _this2 = this;
+      var accudataTitle = /*#__PURE__*/React.createElement("div", {
+        className: "counting"
       }, /*#__PURE__*/React.createElement("span", {
         className: "counting__num",
         style: {
           paddingTop: '5px'
         }
       }, "Accudata"), /*#__PURE__*/React.createElement("span", {
-        className: "time-wrap__title"
-      }, "\u684C\u904A\u793E")), /*#__PURE__*/React.createElement("div", {
+        className: "time-wrap__title",
+        style: {
+          margin: '0px'
+        }
+      }, "\u684C\u904A\u793E"));
+      var serenaTag = /*#__PURE__*/React.createElement("div", {
+        className: "counting",
+        style: {
+          margin: '0px',
+          position: 'fixed',
+          bottom: '20px',
+          right: '10px'
+        }
+      }, /*#__PURE__*/React.createElement("span", {
+        className: "time-wrap__title",
+        style: {
+          fontSize: '10px'
+        }
+      }, "created by serena100615"));
+      var cardNone = /*#__PURE__*/React.createElement("a", {
+        className: "card",
+        style: {
+          marginLeft: '20px',
+          marginRight: '20px'
+        },
+        onClick: function onClick() {
+          _this2.btnCardNoneClick();
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card__img"
+      }, /*#__PURE__*/React.createElement("img", {
+        src: "./Image/aia.png",
+        alt: ""
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "card__desc",
+        style: {
+          padding: '0px'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card__right",
+        style: {
+          width: '100%',
+          fontSize: '20px'
+        }
+      }, "\uD83D\uDD0E\u9EDE\u64CA\u62BD\u5361\uD83D\uDD0E")));
+      var cardGet = /*#__PURE__*/React.createElement("a", {
+        className: "card",
+        style: {
+          marginLeft: '20px',
+          marginRight: '20px'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card__img"
+      }, /*#__PURE__*/React.createElement("img", {
+        src: "./Image/aiaB.png",
+        alt: ""
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "card__desc"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "card__left",
+        style: {
+          width: '100%',
+          fontSize: '20px',
+          margin: '0px'
+        }
+      }, /*#__PURE__*/React.createElement("label", {
+        className: "section-name"
+      }, "\u5730\u9EDE"), /*#__PURE__*/React.createElement("div", {
+        className: "card__title",
+        style: {
+          marginBottom: '5px'
+        }
+      }, "\u7CBE\u85E4"), /*#__PURE__*/React.createElement("label", {
+        className: "section-name"
+      }, "\u89D2\u8272"), /*#__PURE__*/React.createElement("div", {
+        className: "card__title"
+      }, "\u85AA\u6C34\u5C0F\u5077"))));
+      var main = /*#__PURE__*/React.createElement("div", {
+        className: "container full-page"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "text-center"
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginBottom: '110px'
+        }
+      }, accudataTitle), /*#__PURE__*/React.createElement("div", {
         className: "time-wrap",
         style: {
-          marginBottom: '120px'
+          marginBottom: '110px'
         }
       }, /*#__PURE__*/React.createElement("div", {
         className: "time-wrap__start"
@@ -161,27 +265,89 @@ var Main = /*#__PURE__*/function (_React$Component) {
           fontFamily: 'revert'
         },
         onClick: function onClick() {
-          ChangeColor('BLUE');
+          _this2.btnStartClick();
         }
       }, "\uD83D\uDC7E", /*#__PURE__*/React.createElement("span", {
         className: "counting__num",
         style: {
           color: 'red'
         }
-      }, "START"), "\uD83D\uDC7E"), /*#__PURE__*/React.createElement("div", {
+      }, "START"), "\uD83D\uDC7E"), serenaTag));
+      var join = /*#__PURE__*/React.createElement("div", {
+        className: "container full-page"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "text-center"
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginBottom: '100px'
+        }
+      }, accudataTitle, /*#__PURE__*/React.createElement("label", {
+        className: "section-name"
+      }, "\uD83D\uDD75\uFE0F\u200D\u8AB0\u662F\u9593\u8ADC\uD83D\uDD75\uFE0F\u200D")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginBottom: '130px'
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "coupon-input",
+        style: {
+          marginTop: '25px',
+          marginLeft: '30px',
+          marginBottom: '25px',
+          marginRight: '25px'
+        }
+      }, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "\u8ACB\u8F38\u5165\u4F60\u7684\u540D\u5B57"
+      })), /*#__PURE__*/React.createElement("div", {
+        className: "coupon-input",
+        style: {
+          marginTop: '25px',
+          marginLeft: '30px',
+          marginBottom: '25px',
+          marginRight: '25px'
+        }
+      }, /*#__PURE__*/React.createElement("input", {
+        type: "text",
+        placeholder: "\u8ACB\u8F38\u5165\u904A\u6232\u623F\u865F"
+      }))), /*#__PURE__*/React.createElement("button", {
+        className: "all-take-btn",
+        style: {
+          fontFamily: 'revert'
+        },
+        onClick: function onClick() {
+          _this2.btnJoinClick();
+        }
+      }, "\uD83D\uDC49", /*#__PURE__*/React.createElement("span", {
+        className: "counting__num"
+      }, "JOIN"), "\uD83D\uDC48"), serenaTag));
+      var card = /*#__PURE__*/React.createElement("div", {
+        className: "container full-page"
+      }, /*#__PURE__*/React.createElement("div", {
+        className: "text-center"
+      }, /*#__PURE__*/React.createElement("div", null, accudataTitle, /*#__PURE__*/React.createElement("label", {
+        className: "section-name"
+      }, "\uD83D\uDD75\uFE0F\u200D\u8AB0\u662F\u9593\u8ADC\uD83D\uDD75\uFE0F\u200D")), /*#__PURE__*/React.createElement("div", {
         className: "counting",
         style: {
-          textAlign: 'right'
+          color: 'white'
         }
       }, /*#__PURE__*/React.createElement("span", {
-        className: "time-wrap__title",
         style: {
-          fontSize: '10px'
+          marginRight: '15px'
         }
-      }, "created by serena100615")));
-      return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
-        className: "container full-page"
-      }, main));
+      }, "\u73A9\u5BB6\uFF1Aserena100615"), "\u623F\u865F\uFF1A2536363"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          marginBottom: '20px'
+        }
+      }, this.state.getCard ? cardGet : cardNone), this.state.getCard ? /*#__PURE__*/React.createElement("button", {
+        className: "all-take-btn",
+        style: {
+          fontFamily: 'revert'
+        }
+      }, "\uD83D\uDC49", /*#__PURE__*/React.createElement("span", {
+        className: "counting__num"
+      }, "VOTE"), "\uD83D\uDC48") : null, serenaTag));
+      return /*#__PURE__*/React.createElement("div", null, this.state.currentPage == "Main" ? main : null, this.state.currentPage == "Join" ? join : null, this.state.currentPage == "Card" ? card : null);
     }
   }]);
   return Main;
