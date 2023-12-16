@@ -2,10 +2,25 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="" />
+    <meta property="og:image" content="要完整的圖片網址">
+    <meta property="og:description" content="" />
+    <!-- <meta property="og:url" content="site_url" /> -->
+    <base href="./">
+    <link rel="icon" href="/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>AccudataGame</title>
+
+    
     <script src="/Scripts/jquery-3.4.1.min.js"></script>
     <link href="/Styles/mask-loaing.css" rel="stylesheet" />
     <link href="/Styles/index.min.css" rel="stylesheet" />
+    <link href="/Style/GREEN.css" rel="stylesheet" id="serenaCss" />
+    
     <script>
 
         //更新資料測試
@@ -63,7 +78,7 @@
                 type: 'GET',
                 data: data,
                 cache: false,
-                success: success,
+                success: function (e) { success(e); },
                 error: function (e) { error(e); m_Hide(); }
             };           
 
@@ -78,30 +93,24 @@
                 alert(data.ip)
             });
         }
-    </script>
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
+        
+        function ChangeColor(color) {
+        let url = document.querySelector("#serenaCss").href
+        let colorList = ['BLUE', 'GREEN', 'ORANGE', 'WHITE', 'YELLOW']
+        for (let i = 0; i < colorList.length; i++) {                
+            if (url.includes(colorList[i])) {
+                url = url.replace(colorList[i], color)
+                break;
+            }
         }
+        document.querySelector("#serenaCss").href = url;
 
-        .bg {
-            /* The image used */
-            background-image: url("../Content/MainBack.png");
-            /* Full height */
-            height: 100%;
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-    </style>
+    }
+    </script> 
 </head>
 <body>   
-    <div id="app" >
-        
-    <button onclick="testIP()">AAA</button>
-   </div>
+    <div id="app"></div>
+     <script src="~/Scripts/build/Index.bundle.js?E121A8068E6DC47CF5BE6ECD4023D02D7794FB76"></script>
     <div class="mask-container" style="display:none">
         <div class="loading-container">
             <div class="loading"></div>
@@ -109,4 +118,7 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $('.mask-container').hide();
+</script>
 </html>
