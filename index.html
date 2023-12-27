@@ -21,83 +21,47 @@
     <link href="/Styles/index.min.css" rel="stylesheet" />
     <link href="/Styles/GREEN.css" rel="stylesheet" id="serenaCss" />
     
-    <script>
+    <script type="text/javascript">
 
-        //更新資料測試
-        function callApi1Test() {
-
-            $.ajax(
-                {
-                    url: 'https://script.google.com/macros/s/AKfycbyJ2B759x_15a0pkqo5-syJ3RxUDFuWQLeQL3DcVFjjyxPFsRXj6BvcgBCEd2RuJpRXFQ/exec',
-                    type: 'GET',
-                    data: {d:'123'},
-                    success: function (e) {
-                        console.log(e)
-                        if (e.RESULT_CODE == '99') {
-                            alert('RESULT_DESC:' + e.RESULT_DESC)
-                        }
-                    },
-                    error: function (e) {
-                        alert('RESULT_DESC:' + e.RESULT_DESC)
-                    }
-                });
+    var maskFlag = 0;
+    var IP = '123';
+    function m_Show() {
+        if (maskFlag == 0) {
+            $('.mask-container').show();
         }
+        maskFlag++;
+    }
 
-
-
-
-        async function getData() {
-            const uri = 'https://script.google.com/macros/s/AKfycbz9Y6TknyWrXQ54hlMXMHRY77hMUSX8wWeZ0BT_VdZhUWWip8VUxwPolc7AdVoLt_ADDA/exec'
-            const response = await fetch(uri);
-            const data = await response.json();
-            console.log(data);
+    function m_Hide() {
+        maskFlag--;
+        if (maskFlag <= 0) {
+            $('.mask-container').hide();
+            maskFlag = 0;
         }
+    }
 
-        var maskFlag = 0;
+    function Api(data, success, error) {
+        m_Show();
+        var dataObj = {
+            url: 'https://script.google.com/macros/s/AKfycbwCnhBd1d3RFkdiPZVK4FJqapVwghNHKOZA0SizmBa6_jdIxGHprmHp9JvPDT42SGtf1w/exec',
+            type: 'POST',
+            data: data,
+            success: function (e) {
+                success(e);
+            },
+            error: function (e) { error(e); m_Hide(); }
+            /**/
+        };
 
-        function m_Show() {
-            if (maskFlag == 0) {
-                $('.mask-container').show();
-            }
-            maskFlag++;
-        }
+        $.ajax(dataObj).done(function () {
+            m_Hide();
+        });
+    }
 
-        function m_Hide() {
-            maskFlag--;
-            if (maskFlag <= 0) {
-                $('.mask-container').hide();
-                maskFlag = 0;
-            }
-        }
-
-        function Api(url, data, success, error) {
-            m_Show();
-            var dataObj = {
-                url: url,
-                dataType: 'json',
-                type: 'GET',
-                data: data,
-                cache: false,
-                success: function (e) { success(e); },
-                error: function (e) { error(e); m_Hide(); }
-            };           
-
-            $.ajax(dataObj).done(function () {
-                m_Hide();
-            });
-        }
-        function testIP() {
-            $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function (data) {
-                console.log(JSON.stringify(data, null, 2));
-               let d =  JSON.stringify(data, null, 2)
-                alert(data.ip)
-            });
-        }
-        
-        function ChangeColor(color) {
+    function ChangeColor(color) {
         let url = document.querySelector("#serenaCss").href
         let colorList = ['BLUE', 'GREEN', 'ORANGE', 'WHITE', 'YELLOW']
-        for (let i = 0; i < colorList.length; i++) {                
+        for (let i = 0; i < colorList.length; i++) {
             if (url.includes(colorList[i])) {
                 url = url.replace(colorList[i], color)
                 break;
@@ -106,11 +70,18 @@
         document.querySelector("#serenaCss").href = url;
 
     }
-    </script> 
+
+    function GetUserIP() {
+        $.getJSON('https://api.ipify.org?format=jsonp&callback=?', function (data) {
+            let d = JSON.stringify(data, null, 2)
+            document.getElementById("ip").innerHTML = data.ip
+        });
+    }
+</script>
 </head>
 <body>   
     <div id="app"></div>
-     <script src="/Scripts/build/Index.bundle.js?C22533C0791AA46C4BA1430562C29959843849E7"></script>
+      <script src="~/Scripts/build/Index.bundle.js?B06C2FA88D58D7DC843E54395DBF7EF6F8EF1241"></script>
     <div class="mask-container" style="display:none">
         <div class="loading-container">
             <div class="loading"></div>
